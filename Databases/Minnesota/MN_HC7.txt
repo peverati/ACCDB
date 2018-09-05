@@ -1,0 +1,12 @@
+00_1
+01_22
+02_31
+03_adamantane
+04_bicycoct
+05_ethane
+06_ethylene
+07_ethyne
+08_hexane
+09_methane
+10_octane-a
+11_octane-b

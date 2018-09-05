@@ -1,0 +1,14 @@
+11_000-000-SP_Pentane14
+12_080-000-TS_Pentane14
+13_120-000-SP_Pentane14
+14_120-070-TS_Pentane14
+15_120-120-SP_Pentane14
+16_180-000-TS_Pentane14
+17_240-070-TS_Pentane14
+18_240-120-SP_Pentane14
+19_240-180-TS_Pentane14
+20_280-080-TS_Pentane14
+21_GG_Pentane14
+22_GX-_Pentane14
+23_TG_Pentane14
+24_TT_Pentane14

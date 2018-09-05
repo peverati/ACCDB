@@ -1,0 +1,16 @@
+11_methane_Alk44
+12_ethane_Alk44
+13_propane_Alk44
+14_butane_Alk44
+15_pentane_Alk44
+16_hexane_Alk44
+17_heptane_Alk44
+18_octane_Alk44
+19_isobutane_Alk44
+20_isopentane_Alk44
+21_isohexane_Alk44
+22_isoheptane_Alk44
+23_isooctane_Alk44
+24_neopentane_Alk44
+25_neohexane_Alk44
+26_neoheptane_Alk44

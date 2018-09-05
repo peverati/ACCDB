@@ -1,0 +1,16 @@
+Geometries/14_butane_Alk44
+Geometries/15_pentane_Alk44
+Geometries/16_hexane_Alk44
+Geometries/17_heptane_Alk44
+Geometries/18_octane_Alk44
+Geometries/19_isobutane_Alk44
+Geometries/20_isopentane_Alk44
+Geometries/21_isohexane_Alk44
+Geometries/22_isoheptane_Alk44
+Geometries/23_isooctane_Alk44
+Geometries/24_neopentane_Alk44
+Geometries/25_neohexane_Alk44
+Geometries/26_neoheptane_Alk44
+Geometries/27_3methylpentane_Alk44
+Geometries/28_diisopropyl_Alk44
+Geometries/29_hexamethylethane_Alk44

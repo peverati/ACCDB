@@ -1,0 +1,10 @@
+01_Al_es_pEE5
+02_Al_gs_pEE5
+03_Ar_es_pEE5
+04_Ar_gs_pEE5
+05_C+_es_pEE5
+06_C+_gs_pEE5
+07_F_es_pEE5
+08_F_gs_pEE5
+09_Si+_es_pEE5
+10_Si+_gs_pEE5

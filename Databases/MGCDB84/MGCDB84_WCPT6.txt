@@ -1,0 +1,12 @@
+39_Rxn2_Reactant_WCPT27
+40_Rxn3_Reactant_WCPT27
+42_Rxn5_Reactant_WCPT27
+44_Rxn7_Reactant_WCPT27
+45_Rxn8_Reactant_WCPT27
+46_Rxn9_Reactant_WCPT27
+48_Rxn2_Product_WCPT27
+49_Rxn3_Product_WCPT27
+51_Rxn5_Product_WCPT27
+53_Rxn7_Product_WCPT27
+54_Rxn8_Product_WCPT27
+55_Rxn9_Product_WCPT27

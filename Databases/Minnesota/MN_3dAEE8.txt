@@ -1,0 +1,16 @@
+00_Ca+_es_3dAEE8
+01_Ca+_gs_3dAEE8
+02_Fe2_es_3dAEE8
+03_Fe2_gs_3dAEE8
+04_Fe_es_3dAEE8
+05_Fe_gs_3dAEE8
+06_Mn+_es_3dAEE8
+07_Mn+_gs_3dAEE8
+08_Ni+_es_3dAEE8
+09_Ni+_gs_3dAEE8
+10_Sc_es_3dAEE8
+11_Sc_gs_3dAEE8
+12_V_es_3dAEE8
+13_V_gs_3dAEE8
+14_Zn_es_3dAEE8
+15_Zn_gs_3dAEE8

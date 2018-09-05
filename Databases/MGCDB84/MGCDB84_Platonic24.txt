@@ -1,0 +1,12 @@
+11_C4H4_Platonic24
+12_C6H6_Platonic24
+13_C8H8_Platonic24
+14_C10H10_Platonic24
+15_C12H12_Platonic24
+16_C20H20_Platonic24
+17_H_Platonic24
+18_C_Platonic24
+19_H2_Platonic24
+20_CH4_Platonic24
+21_C2H6_Platonic24
+22_C4H10_Platonic24

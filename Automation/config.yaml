@@ -1,0 +1,48 @@
+---
+# ------------------------- #
+# Input Files Customization #
+# ------------------------- #
+
+#input files template
+TEMPL1: qcengine.tmpl
+
+METHODS:
+- M11
+- PBE
+
+BASES:
+- cc-pVDZ
+- pc-0
+
+#Number of processors for parallel jobs
+PROC: 4
+
+#If you don't use this, leave it blank and don't comment it out, otherwise it will result in an error.
+OTHERS: RHF
+
+# ------------------ #
+# Directory location #
+# ------------------ #
+
+#Directory containing all xyz files (full or relative path)
+GEOMETRIES_DIR: Geometries
+
+#Directory where the output file structures is created (full or relative path)
+OUTPUTS_DIR: output_dir
+
+#Directory containing the list of databases/subsets that needs to be run (they can be more than one)
+MOL_LIST_DIR: mol_list
+
+# ---------------- #
+# Running the jobs #
+# ---------------- #
+
+#Call to the quantum chemistry program
+QCENGINE_CALL: "qchem -nt {nproc} {input} {output}"   #Q-Chem
+          # "g16 {input} {output}"                 #Gaussian
+          
+#regexp to extract final energies from output files
+REGEXP: ' Total energy in the final basis set =\s+' #Q-CHEM
+      # 'SCF Done:  E({method}) =  '                # Gaussian
+
+...

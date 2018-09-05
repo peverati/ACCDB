@@ -1,0 +1,11 @@
+AL2X6_al2cl6
+AL2X6_al2f6
+AL2X6_al2h6
+AL2X6_al2me4
+AL2X6_al2me5
+AL2X6_al2me6
+AL2X6_alcl3
+AL2X6_alf3
+AL2X6_alh3
+AL2X6_alme2
+AL2X6_alme3

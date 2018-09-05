@@ -1,0 +1,185 @@
+#
+# Copyright 2018 Roberto Peverati, Theoretical and Computational Chemistry Group at Florida Institute of Technology
+# 
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation version 3.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# If you are using this software for publishing scientific work, you should also cite the following reference:
+# Morgante, P; Peverati, R.; SoftwareX, 2018, *submitted*
+#
+import csv
+import re
+import os
+import glob
+from operator import itemgetter
+from datetime import timedelta
+#
+#    --- ACCDB WORKFLOW FILE ---
+#
+# This snakemake workflow file is to run all calculation on a specific database.
+# Also, it can be used to gather and print all final energies.
+#
+# The most important things to check are:
+# - All input files must be in xyz format and in the ./Geometries folder (this pathway is changeable in the config.yaml file associated).
+#   xyz files must include charge and multiplicity information in the comment line (e.g. 0 1. Nothing else is allowed in this line).
+#   The first line should be the number of atoms in the molecule. See the Geometries folder if you are not sure about how to format the files.
+# - You need a quantum chemistry engine (Q-Chem and Gaussian are tested and the correct shell call is provided in the code below, 
+# a few regex for extracting data are provided).
+# - A template file for building the input for the qc engine must be given as qcengine.tmpl (see included example for q-chem and Gaussian).
+# - Methods can be specified in the config.yaml under the key METHODS (HF, specifc XC functionals, etc.), as well as the basis set(s). 
+# Other parameters can be coded in if needed.
+# - Energies can be (re-)printed separately by calling 'snakemake ALL_ENERGY_PRINT'.
+#
+# The structure of the folders after a vanilla set of calculation looks as follows:
+# Starting directory:
+#    ./
+# Initial geometries:
+#    ./Geometries/
+# Initial template:
+#    ./qcengine.tmpl (several examples are provided)
+# Main folder for each molecule:
+#    ./output_DIR/{method}/{basis}/{molecule}/
+# input/output and internal files:
+#    ./output_DIR/{method}/{basis}/{molecule}/mol.in and mol.out
+#    ./output_DIR/{method}/{basis}/{molecule}/.keep
+# Specific rules for copying checkpoint files (or orbital files) should be coded in if needed.
+#
+# If you need more control (e.g. cluster support), you need to hardcode it in (see snakemake website for info).
+#
+configfile: "config.yaml"
+#
+def get_all_inputs():
+#read all text files in MOL_LIST_DIR and cat them into a launch_list file containing the names of all molecules
+    path = os.path.join(config["MOL_LIST_DIR"], '*.txt')
+    read_files=glob.glob(path)
+    with open("launch_list", "w") as outfile:
+        for f in read_files:
+            with open(f, "r") as inputfile:
+                outfile.write(inputfile.read())
+    with open('launch_list') as f:
+        molecule = f.read().splitlines()
+    return molecule
+
+wildcard_constraints:
+     molecule='[-\w+=.]+',
+     method='[-\w+=.]+',
+     basis='[-\w]+',
+     restriction='RHF|UHF',
+
+# METHODS = ('B3LYP',)
+METHODS = config['METHODS']
+
+# BASES = ('def2QZVPPD',)
+BASES = config['BASES']
+
+# OTHERS can be anything you might need: RHF or UHF, different integration grids, and so on.
+OTHERS = config['OTHERS']
+
+# INPUTS_DIR = 'Geometries'
+GEOMETRIES_DIR = config['GEOMETRIES_DIR']
+
+OUTPUTS_DIR=config["OUTPUTS_DIR"]
+
+# TEMPL1 = 'qcengine.tmpl'
+TEMPL1 = config['TEMPL1']
+
+# NUMBER OF PROCESSORS/CORES/THREADS
+nproc = config['PROC']
+
+def get_energy(*path):
+    "get calculated energies for molecule"
+#
+# Next section is for extraction of the results (energies). The correct regex should be selected in the configfile, based on each problem/database/qcengine
+#
+    engine_exp = config["REGEXP"]
+    energy_exp = '(?P<energy>[-+]?\d+\.\d+)'
+    total_exp = engine_exp + energy_exp
+    regexp = re.compile(total_exp)
+    with open(os.path.join(*path, 'mol.out'), 'r') as qcengine_out:
+        energy = re.findall(regexp, qcengine_out.read())
+        if energy:
+            # we are only interested in the last occurrence
+            return float(energy[-1])
+
+rule ALL:
+    input:
+        expand('{out_DIR}/{method}/{basis}/{molecule}/mol.out', molecule=get_all_inputs(), method=METHODS, basis=BASES, out_DIR=OUTPUTS_DIR),
+
+rule ALL_ENERGY_PRINT:
+#This rule is called to print the .csv file with all the final energies.
+    input:
+        expand('{method}_{basis}_energy.csv', method=METHODS, basis=BASES),
+
+rule ENERGY_PRINT:
+#This rule is the one that extracts all the results from the output files.
+    output:     '{method}_{basis}_energy.csv'
+    run:
+        out_DIR=OUTPUTS_DIR
+        with open(output[0], 'w', newline='') as output_file:
+            energy_data = csv.writer(output_file, dialect='excel')
+            fieldnames = ['Molecules', 'Calc_energy',]
+            energy_data.writerow(fieldnames)
+            with open('launch_list') as f:
+                for line in f:
+                    molecule = line.replace('\n', '')
+                    path = (out_DIR, wildcards.method, wildcards.basis, molecule)
+                    try:
+                        energy_data.writerow((
+                        molecule,
+                        get_energy(*path)
+                        ))
+                    except (FileNotFoundError, IndexError) as e:
+                        print(e)
+
+rule QCENGINE_RUN:
+#This rule calls the program.
+    input:      '{out_DIR}/{method}/{basis}/{molecule}/mol.in'
+    output:     '{out_DIR}/{method}/{basis}/{molecule}/mol.out'
+    run:
+        shell(config["QCENGINE_CALL"])
+
+rule QCENGINE_INPUT:
+#This rule writes the input file for the program of choice, based on the template given in the configfile
+    input:      '{out_DIR}/{method}/{basis}/{molecule}/.keep'
+    output:     '{out_DIR}/{method}/{basis}/{molecule}/mol.in'
+    run:
+        for file_name in output:
+            molecule = wildcards.molecule
+            method = wildcards.method.split('_')[0]
+            # set method: useful to change some keywords according to your program's syntax.
+            # set template
+            template = TEMPL1
+            #    template = TEMPL2
+            with open('tolaunch/{molecule}.xyz'.format(molecule=wildcards.molecule), 'r') as f:
+                f.readline()                   # skip first line
+                molecule_data = f.read()[:-1]  # skip last NL
+            with open(file_name, 'w') as f:
+                f.write(open(template).read().format(
+                    basis=wildcards.basis,
+                    method=method,
+                    molecule=molecule,
+                    molecule_data=molecule_data,
+                    nproc=nproc,
+                ))
+
+rule LAUNCH_DIR:
+#This rule copies the xyz from the source folder to the 'tolaunch' directory.
+      input:      GEOMETRIES_DIR + '/{molecule}.xyz'
+      output:     'tolaunch/{molecule}.xyz'
+      run:
+                  shell('cp {input} {output}')
+
+rule QCENGINE_DIRS:
+#This rule builds the input and output files.
+    input:      'tolaunch' + '/{molecule}.xyz'
+    output:     '{out_DIR}/{method}/{basis}/{molecule}/.keep'
+    shell:      'touch {output}'
