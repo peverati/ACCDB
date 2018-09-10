@@ -1,11 +1,11 @@
 ACCDB: A Collection of Chemistry DataBases
 ==========================================
 
-A collection of reliable, freely available, computational chemistry databases, and a set of tools for their manipulation and automation, released under GNU GPL license by Peverati's Theoretical and Computational Chemistry group at Florida Institute of Technology (TCC@FIT). ACCDB was created for the evaluation and parametrization of electronic structure theory methods (such as DFT and semi-empirical WFT methods), but it can be useful in many other areas of computational chemistry research (benchmarking, basis sets development and evaluation, data analysis, etc). **The total number of unique reference data points in ACCDB is 44,105** (all at a level of theory significantly higher than DFT), making it one of the largest collection of computed chemical energies at high-level accuracy.
+A collection of reliable, freely available, computational chemistry databases, and a set of tools for their manipulation and automation, released under GNU GPL license by Peverati's Theoretical and Computational Chemistry group at Florida Institute of Technology (TCC@FIT). ACCDB was created for the evaluation and parametrization of electronic structure theory methods (such as DFT and semi-empirical WFT methods), but it can be useful in many other areas of computational chemistry research (benchmarking, basis sets development and evaluation, data analysis, etc). **The total number of unique reference data points in ACCDB is 44,106** (all at a level of theory significantly higher than DFT), making it one of the largest collection of computed chemical energies at high-level accuracy.
 
 ## The current version of ACCDB is v1.0 and it includes the following databases:
 - **MGCDB84**: Head-Gordon's database, version 2017 [4,986 data in 91 subsets].
-- **GMTKN55**: Grimme's main group thermochemistry, kinetics and noncovalent interactions database [1,675 data in 55 subsets].
+- **GMTKN55**: Grimme's main group thermochemistry, kinetics and noncovalent interactions database [1,676 data in 55 subsets].
 - **Minnesota Database** (version 2015B, excluding geometries and solid state databases): Truhlar's database [471 data in 27 subsets].
 - **DP284**: Head-Gordon's 2018 dipole and polarizabilities databases [284 data in 2 subsets].
 - **Metals**: Collection of databases containing transition metals [210 data in 8 subsets].

@@ -59,7 +59,7 @@ configfile: "config.yaml"
 #
 def get_all_inputs():
 #read all text files in MOL_LIST_DIR and cat them into a launch_list file containing the names of all molecules
-    path = os.path.join(config["MOL_LIST_DIR"], '*.txt')
+    path = os.path.join(config["MOL_LIST_DIR"], '*.list')
     read_files=glob.glob(path)
     with open("launch_list", "w") as outfile:
         for f in read_files:
