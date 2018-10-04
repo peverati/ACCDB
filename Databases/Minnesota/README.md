@@ -3,9 +3,11 @@
 
 **Taken from:** 
 
-2015A: Yu, H.; He, X.; Truhlar. D.G.; J. Chem. Theory Comput. 2016, 12, 1280 https://pubs.acs.org/doi/10.1021/acs.jctc.5b01082 
+2015: Yu, H. S.; Zhang, W.; Verma, P.; He, X.; Truhlar, D.G. 2015, 17, 12146Ð12160. https://pubs.rsc.org/en/Content/ArticleLanding/2015/CP/C5CP01425E 
 
-2015B: Yu, H.; He, X.; Truhlar. D.G.; Chem. Sci., 2016, 7, 5032 http://pubs.rsc.org/en/content/articlelanding/2016/sc/c6sc00705h#!divAbstract.
+2015A: Yu, H.; He, X.; Truhlar, D.G.; J. Chem. Theory Comput. 2016, 12, 1280 https://pubs.acs.org/doi/10.1021/acs.jctc.5b01082 
+
+2015B: Yu, H.; He, X.; Truhlar, D.G.; Chem. Sci., 2016, 7, 5032 http://pubs.rsc.org/en/content/articlelanding/2016/sc/c6sc00705h#!divAbstract.
 
 The suggested basis set for each subset is reported below in square brackets (most non-conventional basis sets are also provided in the basis_sets folder).
 

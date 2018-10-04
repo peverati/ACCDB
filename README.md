@@ -6,7 +6,7 @@ A collection of reliable, freely available, computational chemistry databases, a
 ## The current version of ACCDB is v1.0 and it includes the following databases:
 - **MGCDB84**: Head-Gordon's database, version 2017 [4,986 data in 91 subsets].
 - **GMTKN**: Grimme's main group thermochemistry, kinetics and noncovalent interactions database [1,664 data in 56 subsets].
-- **Minnesota Database** (version 2015B, excluding geometries and solid state databases): Truhlar's database [471 data in 27 subsets].
+- **Minnesota Database** (version 2015, excluding geometries and solid state databases): Truhlar's database [471 data in 27 subsets].
 - **DP284**: Head-Gordon's 2018 dipole and polarizabilities databases [284 data in 2 subsets].
 - **Metals**: Collection of databases containing transition metals [210 data in 8 subsets].
 - **W4-17**: Martin's Weizman 2017 database [203 data in 3 subsets].
@@ -16,13 +16,13 @@ PLEASE READ CAREFULLY THE "**HOW TO CITE**" SECTION BELOW WHEN CITING ANY OF THE
 ## Structure
 ACCDB is composed of the following directories:
 - **Automation**: Containing all snakemake file to automate calculations.
-- **Databases**: Main directory containing all the reference data (DatasetEval.csv), the list of the molecules pertaining to each database (Database.txt), and the original citation (README.md) for all databases, organized in subdirectories.
+- **Databases**: Main directory containing all the reference data (DatasetEval.csv), the list of the molecules pertaining to each database (Database.list), and the original citation (README.md) for all databases, organized in subdirectories.
 - **Geometries**: Containing all geometries for single-point energy calculations, in xyz file format (including charge and spin multiplicity).
 
 ACCDB contains 10,049 geometry files in xyz format that require single-point energy calculations. These calculations will result in 7,829 "traditional" unique reference data points. Two new large reaction energies databases have been obtained using automatic generation, based on W4-17 and Minnesota, containing further 36,276 "non-traditional" reference data points (27,140 in W4-17-RE, and 9,136 in MN-RE).
 
 The reference energies for each database or set are reported in a csv file named DatasetEval.csv (3 equivalent files are available in each directory, with reference energies in Eh, kcal/mol, and kJ/mol). In general, reference values have been obtained with high-level theoretical calculations, refer to each set for details. Each csv file also includes the stoichiometry coefficients and reference to the corresponding filename in the Geometries directory for each unique reference data point, and can be easily parsed for calculation of statistics.
-The list of the molecules pertaining to each database or set are also reported in a txt file, and can be used to extract the relevant xyz files from the **Geometries** directory.
+The list of the molecules pertaining to each database or set are also reported, and can be used to extract the relevant xyz files from the **Geometries** directory.
 
 A full description of each database or set is given in the README file in the **Database** directory, including credits to the original work where it was first introduced. Please do read each of them carefully, especially when citing the data in published scientific materials. In case you have any doubts about citations when using any of the databases reported here, please do give credit to the original work **before** giving credit to us and this work. Credit to ACCDB and TCC@FIT is appreciated, but credit to the original author(s) is mandatory.
 
