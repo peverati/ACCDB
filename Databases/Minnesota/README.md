@@ -1,5 +1,5 @@
 ## Minnesota
-### Minnesota Database 2015A and 2015B (Truhlar's group), excluding geometries and solid state sets
+### Minnesota Database 2015, 2015A, and 2015B (Truhlar's group), excluding geometries and solid state sets
 
 **Taken from:** 
 
