@@ -18,7 +18,7 @@ A collection of reliable, freely available, computational chemistry databases, a
 - **GMTKN55**: Grimme's main group thermochemistry, kinetics and noncovalent interactions database [1,499 data in 55 subsets] https://www.chemie.uni-bonn.de/pctc/mulliken-center/software/GMTKN/gmtkn55
 - **Minnesota Database** (version 2015B, excluding geometries and solid state databases): Truhlar's database [471 data in 34 subsets] https://comp.chem.umn.edu/db2015/
 - **DP284**: Head-Gordon's 2018 dipole and polarizabilities databases [284 data in 2 subsets].
-- **Metals**: Collection of databases containing transition metals [210 data in 8 subsets].
+- **Metals&EE**: Collection of databases containing transition metals [210 data in 8 subsets].
 - **W4-17**: Martin's Weizman 2017 database [1,042 data in 5 subsets].
 
 PLEASE READ CAREFULLY THE "**HOW TO CITE**" SECTION BELOW WHEN CITING ANY OF THE DATABASES COLLECTED HERE!
