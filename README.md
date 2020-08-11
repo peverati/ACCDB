@@ -57,7 +57,7 @@ If you are using MN-RE or W4-17-RE you should cite the ACCDB project (see below)
 
 *The reference for the ACCDB project is*: 
 
-Morgante, P; Peverati, R.; J Comput Chem, 2018, XXX (*submitted*)
+Morgante, P; Peverati, R.; J Comput Chem, 2018, 40 (6), 839-848. [LINK](https://onlinelibrary.wiley.com/doi/abs/10.1002/jcc.25761)
 
 
 ## Versions:
